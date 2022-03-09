@@ -51,6 +51,9 @@ function xmldb_format_psg_upgrade($oldversion) {
         if (!$dbman->table_exists($table)) {
             $dbman->create_table($table);
         }
+
+        // Psg savepoint reached.
+        upgrade_plugin_savepoint(true, 2022010401, 'format', 'psg');
     }
 
     if ($oldversion < 2022021100) {

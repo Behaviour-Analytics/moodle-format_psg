@@ -172,7 +172,7 @@ class format_psg_renderer extends format_section_renderer_base {
     }
 
     /**
-     * Output the html for a single section page .
+     * Output the html for a single section page.
      *
      * @param stdClass $course The course entry from DB
      * @param int $displaysection The section number in the course which is being displayed
@@ -188,11 +188,11 @@ class format_psg_renderer extends format_section_renderer_base {
         if (!($sectioninfo = $modinfo->get_section_info($displaysection)) || !$sectioninfo->uservisible) {
             // This section doesn't exist or is not available for the user.
             // We actually already check this in course/view.php but just in case exit from this function as well.
-            print_error('unknowncoursesection', 'error', course_get_url($course),
+            throw new moodle_exception('unknowncoursesection', 'error', course_get_url($course),
                 format_string($course->fullname));
         }
 
-        // Copy activity clipboard..
+        // Copy activity clipboard.
         echo $this->course_activity_clipboard($course, $displaysection);
         $thissection = $modinfo->get_section_info(0);
         if ($thissection->summary or !empty($modinfo->sections[0]) or $this->page->user_is_editing()) {
