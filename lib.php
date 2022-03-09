@@ -1010,25 +1010,25 @@ function format_psg_get_learning_style_score(&$lsc, &$module) {
 function format_psg_get_ls_from_common_links(&$course, $userid) {
     global $DB;
 
-    $arr = [];
+    $prediction = [];
     // Was script called with course id where plugin is installed?
     if (format_psg_ba_is_installed($course->id)) {
 
         // Get values of analysis to be used for prediction.
         $installed = $DB->get_record('block_behaviour_installed', array('courseid' => $course->id));
-        $arr = explode('_', $installed->prediction);
+        $prediction = explode('_', $installed->prediction);
     }
 
     $min = null;
     $manual = false;
-    if (count($arr) == 3) {
+    if (count($prediction) == 3) {
 
         // Get the latest membership data for this student.
         $params = array(
             'courseid' => $course->id,
-            'userid' => $arr[0],
-            'coordsid' => $arr[1],
-            'clusterid' => $arr[2],
+            'userid' => $prediction[0],
+            'coordsid' => $prediction[1],
+            'clusterid' => $prediction[2],
             'studentid' => $userid,
         );
 
@@ -1075,6 +1075,9 @@ function format_psg_get_ls_from_common_links(&$course, $userid) {
             foreach ($records as $r) {
 
                 $arr = explode('_', $r->link);
+                if (!isset($nodes[$arr[0]]) || !isset($nodes[$arr[1]])) {
+                    continue;
+                }
                 if ($arr[0] != $arr[1]) {
                     $nodes[$arr[0]] += $r->weight;
                 }
@@ -1107,7 +1110,7 @@ function format_psg_get_ls_from_common_links(&$course, $userid) {
             }
         }
     }
-    return $lsc;
+    return [ $lsc, $prediction ];
 }
 
 /**

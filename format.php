@@ -55,6 +55,7 @@ $params = [
 $records = $DB->get_records('block_behaviour_psg_log', $params, 'time DESC');
 
 $record = reset($records);
+
 if ($record && !$record->psgon) {
     $lsc = null;
     $psgon = false;
@@ -63,9 +64,12 @@ if ($record && !$record->psgon) {
     $lsc = format_psg_get_ls_from_survey($course, $USER->id);
 
 } else {
-    $lsc = format_psg_get_ls_from_common_links($course, $USER->id);
-}
+    list($lsc, $prediction) = format_psg_get_ls_from_common_links($course, $USER->id);
 
+    if (count($prediction) == 3 && !$lsc) { // Then this student is not clustered, no error msg.
+        $psgon = false;
+    }
+}
 
 // Make sure section 0 is created.
 course_create_sections_if_missing($course, 0);

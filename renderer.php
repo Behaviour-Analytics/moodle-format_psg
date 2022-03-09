@@ -292,9 +292,6 @@ class format_psg_renderer extends format_section_renderer_base {
             $a = html_writer::tag('a', get_string('psgdocs', 'format_psg'), $params);
             echo html_writer::span(get_string('noprediction', 'format_psg', $a), '', ['style' => 'color: red;']);
         }
-        if ($lsc) {
-            echo var_export($lsc, true) . '<br>';
-        }
         $tosort = [];
 
         // Score the sections based on the average of their contained modules LS score.

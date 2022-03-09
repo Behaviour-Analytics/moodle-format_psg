@@ -183,7 +183,7 @@ class update_module_ls extends \core\task\scheduled_task {
             }
 
             // For students with common link data.
-            $slsc = format_psg_get_ls_from_common_links($course, $sid);
+            list($slsc, $pred) = format_psg_get_ls_from_common_links($course, $sid);
 
             if ($slsc) {
                 foreach ($modulels as $mid => $mlsc) {
