@@ -21,4 +21,8 @@ questionnaire pre-made for students to take, which the PSG plugin can then use
 to determine the personalisation. The PSG plugin also offers the option to use
 common links, which requires a clustering analysis be made in BA, then selected
 for prediction. The personalisation comes from the common links among cluster
-members instead of the ILS.
+members instead of the ILS. In addition the BA needing to be installed and
+configured, the PSG plugin's scheduled task needs to run in order to populate the
+database tables for correct functioning. The BA block provides a button to switch
+the personalisation on and off, logging when the student switches and displaying
+the data in the BA dashboard.
