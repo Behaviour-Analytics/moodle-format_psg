@@ -27,6 +27,8 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->version   = 2022031000;   // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2017110800;   // Requires this Moodle version.
 $plugin->component = 'format_psg'; // Full name of the plugin (used for diagnostics).
+$plugin->release = 'v1.0.0';
+$plugin->maturity = MATURITY_STABLE;
 $plugin->dependencies = [
     'block_behaviour' => 2022022400,
 ];
