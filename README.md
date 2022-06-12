@@ -1,7 +1,8 @@
 moodle-format_psg
 ======================
 
-[![Moodle Plugin CI](https://github.com/Behaviour-Analytics/moodle-format_psg/workflows/Moodle%20Plugin%20CI/badge.svg?branch=master)](https://github.com/Behaviour-Analytics/moodle-format_psg/actions?query=workflow%3A%22Moodle+Plugin+CI%22+branch%3Amaster)
+This repository is deprecated. The source code for this plugin is now hosted at
+https://github.com/VIP-Research-Group/moodle-format_psg
 
 Short description:
 
